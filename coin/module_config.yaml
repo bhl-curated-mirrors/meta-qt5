@@ -1,102 +1,124 @@
-version: 1
+version: 2
 accept_configuration:
   condition: and
   conditions:
     - condition: property
-      property: host.osVersion
-      equals_value: Ubuntu_18_04
-    - condition: property
-      property: target.osVersion
-      equals_value: QEMU
+      property: host.compiler
+      equals_value: Yocto
     - condition: property
       property: target.arch
-      in_values: [ARMv7, ARM64]
+      in_values: [TARGET1, TARGET2, TARGET3]
 
-environment: &environment
+machine_type:
+  Build:
+    cores: 16
+
+# Target build matrix:
+#
+#           [target1]       [target2]   [target3]
+# [machine] qemuarm64       qemux86     qemuarm
+# [yocto]   gatesgarth      dunfell     gatesgarth
+#
+
+target1: &target1
   type: Group
   instructions:
     - type: EnvironmentVariable
-      variableName: POKY_SHA1
-      variableValue: febbe2944c0c4a04b85fa98fdc261186115954d8
-    - type: EnvironmentVariable
-      variableName: OE_SHA1
-      variableValue: 8a72d29e0876830ffd96b85d7d0308302eb07a5d
-    - type: EnvironmentVariable
-      variableName: PYTHON2_SHA1
-      variableValue: e2ef0dd8fa13d6b96e44773b09d07e4817d0a44d
-    - type: EnvironmentVariable
       variableName: MACHINE
       variableValue: qemuarm64
-      enable_if:
-        condition: property
-        property: target.arch
-        equals_value: ARM64
+    - type: EnvironmentVariable
+      variableName: YOCTO_BRANCH
+      variableValue: gatesgarth
+  enable_if:
+      condition: property
+      property: target.arch
+      equals_value: TARGET1
+target2: &target2
+  type: Group
+  instructions:
     - type: EnvironmentVariable
       variableName: MACHINE
       variableValue: qemux86
-      enable_if:
-        condition: property
-        property: target.arch
-        equals_value: ARMv7
+    - type: EnvironmentVariable
+      variableName: YOCTO_BRANCH
+      variableValue: dunfell
+  enable_if:
+      condition: property
+      property: target.arch
+      equals_value: TARGET2
+target3: &target3
+  type: Group
+  instructions:
+    - type: EnvironmentVariable
+      variableName: MACHINE
+      variableValue: qemuarm
+    - type: EnvironmentVariable
+      variableName: YOCTO_BRANCH
+      variableValue: gatesgarth
+  enable_if:
+      condition: property
+      property: target.arch
+      equals_value: TARGET3
 
-build_instructions:
-  - *environment
-  - type: SetBuildDirectory
-    directory: "{{.AgentWorkingDir}}/build"
-  - type: MakeDirectory
-    directory: "{{.BuildDir}}"
-  - type: ChangeDirectory
-    directory: "{{.BuildDir}}"
-  - type: ExecuteCommand
-    command: ["sudo", "mkdir", "-p", "/mnt/yocto-cache"]
-    userMessageOnFailure: "Could not create '/mnt/yocto-cache' directory"
-  - type: ExecuteCommand
-    command: ["sudo", "mount", "yocto-cache.intra.qt.io:/srv/yocto-cache", "/mnt/yocto-cache"]
-    userMessageOnFailure: "Could not mount yocto cache."
-  - type: WriteFile
-    fileContents: |
-      #!/bin/bash -xe
-      git clone git://git.yoctoproject.org/poky --reference /mnt/yocto-cache/mirror/poky.git
-      (cd poky; git checkout ${POKY_SHA1})
-      git clone git://github.com/openembedded/meta-openembedded --reference /mnt/yocto-cache/mirror/meta-openembedded.git
-      (cd meta-openembedded; git checkout ${OE_SHA1})
-      git clone git://git.openembedded.org/meta-python2 --reference /mnt/yocto-cache/mirror/meta-python2.git
-      (cd meta-python2; git checkout ${PYTHON2_SHA1})
-
-      source ./poky/oe-init-build-env
-      export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
-      export DL_DIR=/mnt/yocto-cache/downloads
-      export BB_GENERATE_MIRROR_TARBALLS=1
-      export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../poky/meta-*/conf/distro/poky.conf)
-      bitbake-layers add-layer ../meta-openembedded/meta-oe
-      bitbake-layers add-layer ../meta-python2
-      bitbake-layers add-layer ${SOURCE_DIR}
-
-      echo "require ${SOURCE_DIR}/coin/test-configs.inc" >> conf/local.conf
-
-      # EXCLUDE_FROM_WORLD
-      rm -f ${SOURCE_DIR}/recipes-qt/examples/qt5-opengles2-test_git.bb
-      rm -r ${SOURCE_DIR}/recipes-python/pyqt5/python3-pyqt5_5.15.1.bb
-      rm -r ${SOURCE_DIR}/recipes-python/pyqtchart/python3-pyqtchart_5.15.1.bb
-      bitbake $(find ${SOURCE_DIR} -name *.bb | xargs -n1 basename | sed -e 's/\([^._]*\).*/\1/')
-    filename: "{{.BuildDir}}/start-build"
-    fileMode: 420
-  - type: ExecuteCommand
-    command: ["chmod", "+x", "{{.BuildDir}}/start-build"]
-    userMessageOnFailure: "Could not add execution right to the start-build."
+instructions:
+  Build:
+  - *target1
+  - *target2
+  - *target3
   - type: EnvironmentVariable
     variableName: DL_DIR
     variableValue: "/mnt/yocto-cache/downloads"
   - type: EnvironmentVariable
     variableName: SOURCE_DIR
     variableValue: "{{.SourceDir}}"
+  - type: SetBuildDirectory
+    directory: "{{.AgentWorkingDir}}/build"
+  - type: MakeDirectory
+    directory: "{{.BuildDir}}"
+  - type: ChangeDirectory
+    directory: "{{.BuildDir}}"
+  - type: WriteFile
+    fileContents: |
+      #!/bin/bash -xe
+
+      # make hostname unique for NFS
+      sudo hostname $(hostname -s)-$(date +%s%N)
+
+      sudo mkdir -p /mnt/yocto-cache
+      sudo mount yocto-cache.intra.qt.io:/srv/yocto-cache /mnt/yocto-cache
+
+      git clone git://git.yoctoproject.org/poky --reference /mnt/yocto-cache/mirror/poky.git
+      (cd poky; git checkout ${YOCTO_BRANCH})
+      git clone git://github.com/openembedded/meta-openembedded --reference /mnt/yocto-cache/mirror/meta-openembedded.git
+      (cd meta-openembedded; git checkout ${YOCTO_BRANCH})
+      git clone git://git.openembedded.org/meta-python2 --reference /mnt/yocto-cache/mirror/meta-python2.git
+      (cd meta-python2; git checkout ${YOCTO_BRANCH})
+
+      source ./poky/oe-init-build-env
+      export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
+      export DL_DIR=/mnt/yocto-cache/downloads
+      export BB_GENERATE_MIRROR_TARBALLS=1
+      export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../poky/meta-*/conf/distro/poky.conf)-meta-qt5
+      bitbake-layers add-layer ../meta-openembedded/meta-oe
+      bitbake-layers add-layer ../meta-python2
+      bitbake-layers add-layer ${SOURCE_DIR}
+      echo "require ${SOURCE_DIR}/coin/test-configs.inc" >> conf/local.conf
+
+      # EXCLUDE_FROM_WORLD
+      rm -fv ${SOURCE_DIR}/recipes-qt/examples/qt5-opengles2-test_git.bb
+      rm -rv ${SOURCE_DIR}/recipes-python/pyqt5/python3-pyqt5_*.bb
+      rm -rv ${SOURCE_DIR}/recipes-python/pyqtchart/python3-pyqtchart_*.bb
+      # build all recipes found in the layer
+      bitbake $(find ${SOURCE_DIR} -name *.bb | xargs -n1 basename | sed -e 's/\([^._]*\).*/\1/')
+    filename: "{{.BuildDir}}/start-build"
+    fileMode: 420
   - type: ExecuteCommand
-    command: ["{{.BuildDir}}/start-build"]
-    maxTimeInSeconds: 28800
-    maxTimeBetweenOutput: 28800
+    command: ["bash", "-xe", "{{.BuildDir}}/start-build"]
+    maxTimeInSeconds: 39600
+    maxTimeBetweenOutput: 39600
     userMessageOnFailure: "Build failed."
   - type: ExecuteCommand
     command: ["sudo", "umount", "/mnt/yocto-cache"]
     userMessageOnFailure: "Unmounting cache failed."
 
-test_instructions: []
+  Test: []

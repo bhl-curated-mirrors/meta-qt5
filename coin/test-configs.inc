@@ -81,3 +81,5 @@ TCLIBC_qemux86 = "musl"
 TCLIBC_qemux86copy = "musl"
 # limit parallel make to avoid OOM
 PARALLEL_MAKE_pn-qtwebkit = "-j 8"
+# For decrease memory usage.
+SDK_XZ_COMPRESSION_LEVEL = "-1"
