@@ -38,7 +38,7 @@ SRC_URI += "\
 # http://errors.yoctoproject.org/Errors/Build/44914/
 LDFLAGS_append_x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
-SRCREV = "a16b5af7346c66a1b1b5f08aaf4b4c746ff02c3d"
+SRCREV = "00161266879765f7576587e67677290be9d3cbb6"
 
 # Temporary work around for Qt5MultimediaConfig.cmake referencing non-existent videoeglvideonode directory
 do_install_append() {
