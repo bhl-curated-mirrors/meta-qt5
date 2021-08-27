@@ -7,6 +7,3 @@ QT_GIT_PROTOCOL = "${QT_LTS_GIT_PROTOCOL}"
 QT_MODULE_BRANCH = "tqtc/lts-5.15.6"
 QT_LTS_MODULE_REPO ?= "tqtc-${QT_MODULE}.git"
 QT_MODULE_REPO = "${QT_LTS_MODULE_REPO}"
-
-# Default to commercially licensed Qt LTS
-QT_EDITION = "commercial"
