@@ -28,7 +28,7 @@ DEPENDS += " \
     gperf-native \
     nodejs-native \
     ${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'alsa-lib', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'libxcomposite libxcursor libxi libxrandr libxtst', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'libxcomposite libxcursor libxi libxrandr libxtst libxkbfile', '', d)} \
 "
 
 DEPENDS_append_libc-musl = " libexecinfo"
