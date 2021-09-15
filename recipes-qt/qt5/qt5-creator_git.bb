@@ -24,6 +24,7 @@ PV = "4.13.1+git${SRCPV}"
 SRC_URI = " \
     git://code.qt.io/qt-creator/qt-creator.git;branch=4.13 \
     file://0001-app-Use-malloc_trim-only-on-glibc.patch \
+    file://0001-Fix-interface-of-propertyNameListForWritableProperti.patch \
 "
 SRC_URI_append_libc-musl = " file://0001-Link-with-libexecinfo-on-musl.patch"
 
