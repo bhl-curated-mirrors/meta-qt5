@@ -17,12 +17,12 @@ inherit qmake5 mime-xdg
 DEPENDS += "qtbase qtscript qtxmlpatterns qtx11extras qtdeclarative qttools qttools-native qtsvg chrpath-replacement-native zlib"
 DEPENDS_append_libc-musl = " libexecinfo"
 
-SRCREV = "1da2c1f7666ced45d6eea1cd0adfdc68a828e3a0"
-PV = "4.13.1+git${SRCPV}"
+SRCREV = "978f6caf1e18ad0b0415fde60a8c130448969c6d"
+PV = "4.15.0+git${SRCPV}"
 # Patches from https://github.com/meta-qt5/qtcreator/commits/b4.9.2
 # 4.9.2.meta-qt5.1
 SRC_URI = " \
-    git://code.qt.io/qt-creator/qt-creator.git;branch=4.13 \
+    git://code.qt.io/qt-creator/qt-creator.git;branch=4.15 \
     file://0001-app-Use-malloc_trim-only-on-glibc.patch \
     file://0001-Fix-interface-of-propertyNameListForWritableProperti.patch \
 "
@@ -30,7 +30,10 @@ SRC_URI_append_libc-musl = " file://0001-Link-with-libexecinfo-on-musl.patch"
 
 S = "${WORKDIR}/git"
 
-EXTRA_QMAKEVARS_PRE += "IDE_LIBRARY_BASENAME=${baselib}${QT_DIR_NAME}"
+EXTRA_QMAKEVARS_PRE += " \
+    IDE_LIBRARY_BASENAME=${baselib}${QT_DIR_NAME} \
+    CONFIG+=disable_external_rpath \
+"
 
 EXTRANATIVEPATH += "chrpath-native"
 
@@ -39,7 +42,7 @@ PACKAGECONFIG_append_toolchain-clang = " clang"
 
 # Important note: In case clang was added to qttools' PACKAGECONFIG, it has to
 # be added here too - otherwise build fails trying to link native clang libraries
-PACKAGECONFIG[clang] = ",,clang llvm-common"
+PACKAGECONFIG[clang] = ",,clang"
 
 COMPATIBLE_HOST_toolchain-clang_riscv32 = "null"
 COMPATIBLE_HOST_toolchain-clang_riscv64 = "null"

@@ -33,6 +33,7 @@ SRC_URI += "\
     file://0016-Define-QMAKE_CXX.COMPILER_MACROS-for-clang-on-linux.patch \
     file://0018-tst_qpainter-FE_-macros-are-not-defined-for-every-pl.patch \
     file://0019-Define-__NR_futex-if-it-does-not-exist.patch \
+    file://0020-Revert-Fix-workaround-in-pthread-destructor.patch \
 "
 
 # Disable LTO for now, QT5 patches are being worked upstream, perhaps revisit with
@@ -267,6 +268,7 @@ do_install_append() {
     echo "isEmpty(QMAKE_LINK_C): QMAKE_LINK_C = $OE_QMAKE_LINK_NO_SYSROOT" >> $conf
     echo "isEmpty(QMAKE_LINK_C_SHLIB): QMAKE_LINK_C_SHLIB = $OE_QMAKE_LINK_NO_SYSROOT" >> $conf
     echo "isEmpty(QMAKE_LFLAGS): QMAKE_LFLAGS = ${OE_QMAKE_LDFLAGS}" >> $conf
+    echo "isEmpty(QMAKE_OBJCOPY): QMAKE_OBJCOPY = ${TARGET_PREFIX}objcopy" >> $conf
     echo "isEmpty(QMAKE_STRIP): QMAKE_STRIP = ${TARGET_PREFIX}strip" >> $conf
     echo "isEmpty(CC_host): CC_host = ${CC_host}" >> $conf
     echo "isEmpty(CXX_host): CXX_host = ${CXX_host}" >> $conf

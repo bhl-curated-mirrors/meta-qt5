@@ -1,7 +1,8 @@
-From 967aab36341387968070ae75edd503b1208a6961 Mon Sep 17 00:00:00 2001
+From e16ab9ca069ebb6499ca5c4949fa6db8d58ee7cf Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Andreas=20M=C3=BCller?= <schnitzeltony@gmail.com>
 Date: Mon, 20 Apr 2020 23:56:48 +0200
-Subject: [PATCH] chromium: Fix sandbox 'Aw, snap' for syscalls 403 and 407
+Subject: [PATCH] chromium: Fix sandbox 'Aw, snap' for syscalls 403 and
+ 407
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

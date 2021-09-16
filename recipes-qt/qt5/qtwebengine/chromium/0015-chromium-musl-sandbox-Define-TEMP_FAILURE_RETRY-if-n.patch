@@ -1,8 +1,8 @@
-From 56486b901c7101c5b78b1282f5b81e80141f9b05 Mon Sep 17 00:00:00 2001
+From 0720824a9ddd8dd5733323f98c20da8e20a3f00e Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Fri, 7 Jul 2017 14:01:12 -0700
-Subject: [PATCH] chromium: musl: sandbox: Define TEMP_FAILURE_RETRY if not
- defined
+Subject: [PATCH] chromium: musl: sandbox: Define TEMP_FAILURE_RETRY if
+ not defined
 
 Musl does not define this Macro
 

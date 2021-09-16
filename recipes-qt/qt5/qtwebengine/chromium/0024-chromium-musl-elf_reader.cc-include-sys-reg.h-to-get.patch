@@ -1,16 +1,16 @@
-From 78e9d21a5a43c8af5329ba10daee1859e08d8ccf Mon Sep 17 00:00:00 2001
+From 130dd0978ca18d2108935bf4558de17cce06813c Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Tue, 25 Sep 2018 12:59:05 -0700
-Subject: [PATCH] chromium: musl: elf_reader.cc: include <sys/reg.h> to get
- __WORDSIZE on musl libc
+Subject: [PATCH] chromium: musl: elf_reader.cc: include <sys/reg.h> to
+ get __WORDSIZE on musl libc
 
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
 Signed-off-by: Martin Jansa <Martin.Jansa@gmail.com>
 ---
- chromium/third_party/breakpad/breakpad/configure.ac             | 2 +-
- .../breakpad/breakpad/src/common/dwarf/elf_reader.cc            | 2 ++
- .../breakpad/breakpad/src/common/linux/elf_core_dump.h          | 1 +
- 3 files changed, 4 insertions(+), 1 deletion(-)
+ chromium/third_party/breakpad/breakpad/configure.ac           | 2 +-
+ .../breakpad/breakpad/src/common/dwarf/elf_reader.cc          | 4 ++++
+ .../breakpad/breakpad/src/common/linux/elf_core_dump.h        | 1 +
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/chromium/third_party/breakpad/breakpad/configure.ac b/chromium/third_party/breakpad/breakpad/configure.ac
 index 08513687f34..13745540a5e 100644
@@ -26,10 +26,18 @@ index 08513687f34..13745540a5e 100644
  AM_CONDITIONAL([HAVE_GETCONTEXT], [test "x$ac_cv_func_getcontext" = xyes])
  
 diff --git a/chromium/third_party/breakpad/breakpad/src/common/dwarf/elf_reader.cc b/chromium/third_party/breakpad/breakpad/src/common/dwarf/elf_reader.cc
-index bbfdba68093..fa822e5453a 100644
+index bbfdba68093..a98bb7e6fd7 100644
 --- a/chromium/third_party/breakpad/breakpad/src/common/dwarf/elf_reader.cc
 +++ b/chromium/third_party/breakpad/breakpad/src/common/dwarf/elf_reader.cc
-@@ -36,7 +36,9 @@
+@@ -30,13 +30,17 @@
+ #define _GNU_SOURCE  // needed for pread()
+ #endif
+ 
++#include <config.h>
++#include <sys/reg.h>
+ #include <fcntl.h>
+ #include <limits.h>
+ #include <string.h>
  #include <sys/mman.h>
  #include <sys/stat.h>
  #include <sys/types.h>

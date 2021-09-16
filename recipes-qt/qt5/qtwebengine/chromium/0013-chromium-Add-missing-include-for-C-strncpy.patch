@@ -1,7 +1,7 @@
-From 5b64a08023887bd4664996175120312e07287f1b Mon Sep 17 00:00:00 2001
+From 339af001155fd49f4f967dcf08664e247d258877 Mon Sep 17 00:00:00 2001
 From: Jani Suonpera <jani.suonpera@qt.io>
 Date: Thu, 4 Feb 2021 14:30:44 +0200
-Subject: [PATCH] Add missing include for C strncpy
+Subject: [PATCH] chromium: Add missing include for C strncpy
 
 Task-number:QTBUG-90623
 ---

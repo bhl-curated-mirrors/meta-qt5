@@ -1,7 +1,8 @@
-From 6c1bd0d6abecc1f3c198e4b3e41975edef2ebcff Mon Sep 17 00:00:00 2001
+From 1a89703d1be0fc11c1d417cefdae587d9cb06e62 Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Thu, 2 Jan 2020 17:13:55 -0800
-Subject: [PATCH] chromium: Move CharAllocator definition to a header file
+Subject: [PATCH] chromium: Move CharAllocator definition to a header
+ file
 
 Fixes
 error: invalid application of 'sizeof' to an incomplete type 'cc::ListContainerHelper::CharAllocator'
