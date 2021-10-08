@@ -1,4 +1,4 @@
-From 14eb5b382cabf90352634393c19bf87a4c15766a Mon Sep 17 00:00:00 2001
+From ec82db9b97aa77c499d7f0bf70b130c242fb3c2b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Bj=C3=B6rn=20Sch=C3=A4pers?= <bjoern@hazardy.de>
 Date: Mon, 8 Mar 2021 21:56:06 +0100
 Subject: [PATCH] clangformat: Fix build with LLVM 13
@@ -7,6 +7,7 @@ Change-Id: I5eaad17a6f240aa1e3f246492b69f093b4f59fee
 Reviewed-by: David Schulz <david.schulz@qt.io>
 
 Upstream-Status: Accepted [https://code.qt.io/cgit/qt-creator/qt-creator.git/commit/?id=14eb5b382cabf90352634393c19bf87a4c15766a]
+
 ---
  src/plugins/clangformat/clangformatbaseindenter.cpp | 4 ++++
  src/plugins/clangformat/clangformatutils.cpp        | 4 ++++
@@ -44,6 +45,3 @@ index a249327d0e..770e75908c 100644
      style.SortUsingDeclarations = true;
      style.SpaceAfterCStyleCast = true;
      style.SpaceAfterTemplateKeyword = false;
--- 
-2.31.1
-

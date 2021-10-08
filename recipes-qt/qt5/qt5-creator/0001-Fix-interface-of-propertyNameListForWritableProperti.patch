@@ -1,4 +1,4 @@
-From da429a57a077183d86fe9a4adcb453c07d11e812 Mon Sep 17 00:00:00 2001
+From aa1f4a5dc09d8ded55384bd2172bea431ffa479c Mon Sep 17 00:00:00 2001
 From: Jani Suonpera <jani.suonpera@qt.io>
 Date: Wed, 15 Sep 2021 13:54:30 +0300
 Subject: [PATCH] Fix interface of propertyNameListForWritablePropertie
@@ -12,6 +12,7 @@ Compiling error:
 This is cause of interface changes. There are drop out parameters
 baseName and inspectedObjects from
 QQuickDesignerSupportProperties::propertyNameListForWritableProperties.
+
 ---
  .../qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate.h | 4 +---
  .../qml/qmlpuppet/qmlprivategate/qmlprivategate_56.cpp      | 6 ++----
@@ -33,11 +34,11 @@ index b0b68907ed..e600db3c60 100644
                                        const PropertyName &baseName = PropertyName(),
                                        QObjectList *inspectedObjects = nullptr);
 diff --git a/share/qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate_56.cpp b/share/qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate_56.cpp
-index d41323e310..52a3f5fb28 100644
+index 7e5af01944..b9d6b75596 100644
 --- a/share/qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate_56.cpp
 +++ b/share/qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate_56.cpp
-@@ -65,11 +65,9 @@ PropertyNameList allPropertyNames(QObject *object,
-     return QQuickDesignerSupportProperties::allPropertyNames(object, baseName, inspectedObjects);
+@@ -149,11 +149,9 @@ PropertyNameList allPropertyNames(QObject *object,
+ #endif
  }
  
 -PropertyNameList propertyNameListForWritableProperties(QObject *object,
