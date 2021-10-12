@@ -157,7 +157,7 @@ SRC_URI += " \
 "
 # Patches from https://github.com/meta-qt5/qtwebengine/commits/b5.15
 # 5.15.meta-qt5.12
-SRC_URI_append_libc-musl = "\
+SRC_URI:append:libc-musl = "\
     file://0002-musl-don-t-use-pvalloc-as-it-s-not-available-on-musl.patch \
     file://0003-musl-link-against-libexecinfo.patch \
     file://0004-mkspecs-Allow-builds-with-libc-glibc.patch \
@@ -186,7 +186,7 @@ SRC_URI += " \
 
 # Patches from https://github.com/meta-qt5/qtwebengine-chromium/commits/87-based
 # 87-based.meta-qt5.4
-SRC_URI_append_libc-musl = "\
+SRC_URI:append:libc-musl = "\
     file://chromium/0017-chromium-musl-sandbox-Define-TEMP_FAILURE_RETRY-if-n.patch;patchdir=src/3rdparty \
     file://chromium/0018-chromium-musl-Avoid-mallinfo-APIs-on-non-glibc-linux.patch;patchdir=src/3rdparty \
     file://chromium/0019-chromium-musl-include-fcntl.h-for-loff_t.patch;patchdir=src/3rdparty \
