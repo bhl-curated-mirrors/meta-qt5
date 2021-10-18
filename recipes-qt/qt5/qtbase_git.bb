@@ -14,7 +14,7 @@ LIC_FILES_CHKSUM = " \
 
 # common for qtbase-native, qtbase-nativesdk and qtbase
 # Patches from https://github.com/meta-qt5/qtbase/commits/b5.12-shared
-# 5.12.meta-qt5-shared.9
+# 5.12.meta-qt5-shared.12
 SRC_URI += "\
     file://0001-Add-linux-oe-g-platform.patch \
     file://0002-cmake-Use-OE_QMAKE_PATH_EXTERNAL_HOST_BINS.patch \
@@ -33,10 +33,13 @@ SRC_URI += "\
     file://0015-corelib-Include-sys-types.h-for-uint32_t.patch \
     file://0016-Define-QMAKE_CXX.COMPILER_MACROS-for-clang-on-linux.patch \
     file://0017-Fix-Wdeprecated-copy-warnings.patch \
+    file://0018-qfloat16-Include-limits-header.patch \
 "
 
 # for syncqt
 RDEPENDS_${PN}-tools += "perl"
+
+inherit pkgconfig
 
 # separate some parts of PACKAGECONFIG which are often changed
 PACKAGECONFIG_GL ?= "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gl', 'no-opengl', d)}"
@@ -136,6 +139,7 @@ PACKAGECONFIG[libinput] = "-libinput,-no-libinput,libinput"
 PACKAGECONFIG[journald] = "-journald,-no-journald,systemd"
 # needs kernel 3.17+
 PACKAGECONFIG[getentropy] = "-feature-getentropy,-no-feature-getentropy,"
+PACKAGECONFIG[vulkan] = "-vulkan,-no-vulkan,vulkan-headers"
 
 QT_CONFIG_FLAGS_GOLD = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', '-use-gold-linker', '-no-use-gold-linker', d)}"
 # workaround for gold bug:
@@ -275,5 +279,23 @@ do_install_append() {
 INSANE_SKIP_${PN}-mkspecs += "file-rdeps"
 
 RRECOMMENDS_${PN}-plugins += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'libx11-locale', '', d)}"
+
+TARGET_MKSPEC ?= "linux-g++"
+
+# use clean mkspecs on target
+pkg_postinst_${PN}-tools () {
+sed -i \
+    -e 's:HostSpec =.*:HostSpec = ${TARGET_MKSPEC}:g' \
+    -e 's:TargetSpec =.*:TargetSpec = ${TARGET_MKSPEC}:g' \
+    $D${OE_QMAKE_PATH_BINS}/qt.conf
+}
+
+pkg_postinst_${PN}-mkspecs () {
+sed -i 's: cross_compile : :g' $D${OE_QMAKE_PATH_ARCHDATA}/mkspecs/qconfig.pri
+sed -i \
+    -e 's: cross_compile : :g' \
+    -e 's:HOST_QT_TOOLS =.*::g' \
+    $D${OE_QMAKE_PATH_ARCHDATA}/mkspecs/qmodule.pri
+}
 
 SRCREV = "4341f6763b8a737ebc07bb78ead22bc05a1a515b"
