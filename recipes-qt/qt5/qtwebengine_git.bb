@@ -177,32 +177,31 @@ SRC_URI += " \
     file://chromium/0009-chromium-Move-CharAllocator-definition-to-a-header-f.patch;patchdir=src/3rdparty \
     file://chromium/0010-chromium-Link-v8-with-libatomic-on-x86.patch;patchdir=src/3rdparty \
     file://chromium/0011-chromium-icu-use-system-library-only-targets.patch;patchdir=src/3rdparty \
-    file://chromium/0012-chromium-Fix-sandbox-Aw-snap-for-syscalls-403-and-40.patch;patchdir=src/3rdparty \
-    file://chromium/0013-chromium-Add-missing-include-for-C-strncpy.patch;patchdir=src/3rdparty \
-    file://chromium/0014-chromium-abseil-cpp-mojo-perfetto-fix-build-with-gcc.patch;patchdir=src/3rdparty \
-    file://chromium/0015-chromium-abseil-cpp-fix-build-with-glibc-2.34.patch;patchdir=src/3rdparty \
-    file://chromium/0016-chromium-breakpad-fix-build-with-glibc-2.34.patch;patchdir=src/3rdparty \
+    file://chromium/0012-chromium-Add-missing-include-for-C-strncpy.patch;patchdir=src/3rdparty \
+    file://chromium/0013-chromium-abseil-cpp-mojo-perfetto-fix-build-with-gcc.patch;patchdir=src/3rdparty \
+    file://chromium/0014-chromium-abseil-cpp-fix-build-with-glibc-2.34.patch;patchdir=src/3rdparty \
+    file://chromium/0015-chromium-breakpad-fix-build-with-glibc-2.34.patch;patchdir=src/3rdparty \
 "
 
 # Patches from https://github.com/meta-qt5/qtwebengine-chromium/commits/87-based
 # 87-based.meta-qt5.4
 SRC_URI:append:libc-musl = "\
-    file://chromium/0017-chromium-musl-sandbox-Define-TEMP_FAILURE_RETRY-if-n.patch;patchdir=src/3rdparty \
-    file://chromium/0018-chromium-musl-Avoid-mallinfo-APIs-on-non-glibc-linux.patch;patchdir=src/3rdparty \
-    file://chromium/0019-chromium-musl-include-fcntl.h-for-loff_t.patch;patchdir=src/3rdparty \
-    file://chromium/0020-chromium-musl-use-off64_t-instead-of-the-internal-__.patch;patchdir=src/3rdparty \
-    file://chromium/0021-chromium-musl-linux-glibc-make-the-distinction.patch;patchdir=src/3rdparty \
-    file://chromium/0022-chromium-musl-Define-res_ninit-and-res_nclose-for-no.patch;patchdir=src/3rdparty \
-    file://chromium/0023-chromium-musl-Do-not-define-__sbrk-on-musl.patch;patchdir=src/3rdparty \
-    file://chromium/0024-chromium-musl-Adjust-default-pthread-stack-size.patch;patchdir=src/3rdparty \
-    file://chromium/0025-chromium-musl-Use-_fpstate-instead-of-_libc_fpstate-.patch;patchdir=src/3rdparty \
-    file://chromium/0026-chromium-musl-elf_reader.cc-include-sys-reg.h-to-get.patch;patchdir=src/3rdparty \
-    file://chromium/0027-chromium-musl-pread-pwrite.patch;patchdir=src/3rdparty \
-    file://chromium/0028-chromium-musl-initialize-msghdr-in-a-compatible-mann.patch;patchdir=src/3rdparty \
+    file://chromium/0016-chromium-musl-sandbox-Define-TEMP_FAILURE_RETRY-if-n.patch;patchdir=src/3rdparty \
+    file://chromium/0017-chromium-musl-Avoid-mallinfo-APIs-on-non-glibc-linux.patch;patchdir=src/3rdparty \
+    file://chromium/0018-chromium-musl-include-fcntl.h-for-loff_t.patch;patchdir=src/3rdparty \
+    file://chromium/0019-chromium-musl-use-off64_t-instead-of-the-internal-__.patch;patchdir=src/3rdparty \
+    file://chromium/0020-chromium-musl-linux-glibc-make-the-distinction.patch;patchdir=src/3rdparty \
+    file://chromium/0021-chromium-musl-Define-res_ninit-and-res_nclose-for-no.patch;patchdir=src/3rdparty \
+    file://chromium/0022-chromium-musl-Do-not-define-__sbrk-on-musl.patch;patchdir=src/3rdparty \
+    file://chromium/0023-chromium-musl-Adjust-default-pthread-stack-size.patch;patchdir=src/3rdparty \
+    file://chromium/0024-chromium-musl-Use-_fpstate-instead-of-_libc_fpstate-.patch;patchdir=src/3rdparty \
+    file://chromium/0025-chromium-musl-elf_reader.cc-include-sys-reg.h-to-get.patch;patchdir=src/3rdparty \
+    file://chromium/0026-chromium-musl-pread-pwrite.patch;patchdir=src/3rdparty \
+    file://chromium/0027-chromium-musl-initialize-msghdr-in-a-compatible-mann.patch;patchdir=src/3rdparty \
 "
 
-SRCREV_qtwebengine = "9e63ed6757cebf644370469b5c9b0215c27c5744"
-SRCREV_chromium = "9f71911e38c041cedc5291c5e772b7d03ce8b8c8"
+SRCREV_qtwebengine = "f0a1cb8da24518c03858b85378f9ad82b0603a1a"
+SRCREV_chromium = "8c0a9b4459f5200a24ab9e687a3fb32e975382e5"
 SRCREV = "${SRCREV_qtwebengine}"
 
 SRCREV_FORMAT = "qtwebengine_chromium"
