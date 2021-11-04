@@ -103,7 +103,7 @@ instructions:
 
       git clone git://git.yoctoproject.org/poky --reference /mnt/yocto-cache/mirror/poky.git
       (cd poky; git checkout ${YOCTO_BRANCH})
-      git clone git://github.com/openembedded/meta-openembedded --reference /mnt/yocto-cache/mirror/meta-openembedded.git
+      git clone git://git.openembedded.org/meta-openembedded --reference /mnt/yocto-cache/mirror/meta-openembedded.git
       (cd meta-openembedded; git checkout ${YOCTO_BRANCH})
       git clone git://git.openembedded.org/meta-python2 --reference /mnt/yocto-cache/mirror/meta-python2.git
       (cd meta-python2; git checkout ${YOCTO_BRANCH})
