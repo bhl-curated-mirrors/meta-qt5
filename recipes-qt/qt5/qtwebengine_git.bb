@@ -181,7 +181,7 @@ SRC_URI_append_libc-musl = "\
 "
 
 SRCREV_qtwebengine = "c3b0847c0fb09df197554fed7bba1683191b9c12"
-SRCREV_chromium = "4e224e5af48f9268d8f72b0f8adf4e9a1a470ca6"
+SRCREV_chromium = "b249cd9b6455cafacb8f7c99d300cefc59881cc2"
 SRCREV = "${SRCREV_qtwebengine}"
 
 SRCREV_FORMAT = "qtwebengine_chromium"
