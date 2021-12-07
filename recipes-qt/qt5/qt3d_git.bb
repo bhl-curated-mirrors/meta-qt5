@@ -16,6 +16,12 @@ DEPENDS:class-target += "qtdeclarative qt3d-native"
 SRC_URI += " \
     file://0001-Allow-a-tools-only-build.patch \
 "
+
+# For assimp submodule
+SRC_URI += " \
+    git://github.com/assimp/assimp.git;name=assimp;branch=assimp_5.0_release;protocol=https;destsuffix=git/src/3rdparty/assimp/src \
+"
+
 SRC_URI:append:riscv64 = " file://0001-renderers-opengl-Link-in-libatomic-on-riscv.patch"
 SRC_URI:append:riscv32 = " file://0001-renderers-opengl-Link-in-libatomic-on-riscv.patch"
 
@@ -38,6 +44,9 @@ do_configure:prepend() {
          ${S}/src/quick3d/imports/input/importsinput.pro
 }
 
-SRCREV = "a3b3cf04271cdc98af947823aa005a8090a1d37a"
+SRCREV_qt3d = "ff5eceac431131919afbea668deb5d28da3f926e"
+SRCREV_assimp = "8f0c6b04b2257a520aaab38421b2e090204b69df"
+
+SRCREV_FORMAT = "qt3d_assimp"
 
 BBCLASSEXTEND += "native nativesdk"
