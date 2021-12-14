@@ -1,5 +1,4 @@
 # https://github.com/shr-project/jenkins-jobs/blob/master/jenkins-job.sh
-INHERIT += "reproducible_build_simple"
 # need space for dunfell build
 INHERIT += "rm_work"
 # We want musl and glibc to share the same tmpfs, so instead of appending default "-${TCLIBC}" we append "fs"
