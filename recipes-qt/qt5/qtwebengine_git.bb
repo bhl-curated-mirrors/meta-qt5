@@ -179,7 +179,6 @@ SRC_URI += " \
     file://chromium/0011-chromium-icu-use-system-library-only-targets.patch;patchdir=src/3rdparty \
     file://chromium/0012-chromium-Add-missing-include-for-C-strncpy.patch;patchdir=src/3rdparty \
     file://chromium/0013-chromium-abseil-cpp-mojo-perfetto-fix-build-with-gcc.patch;patchdir=src/3rdparty \
-    file://chromium/0014-chromium-abseil-cpp-fix-build-with-glibc-2.34.patch;patchdir=src/3rdparty \
     file://chromium/0015-chromium-breakpad-fix-build-with-glibc-2.34.patch;patchdir=src/3rdparty \
 "
 
@@ -200,8 +199,8 @@ SRC_URI:append:libc-musl = "\
     file://chromium/0027-chromium-musl-initialize-msghdr-in-a-compatible-mann.patch;patchdir=src/3rdparty \
 "
 
-SRCREV_qtwebengine = "402f5a4a78347ed56be59396a3e3877ea9791f47"
-SRCREV_chromium = "8c0a9b4459f5200a24ab9e687a3fb32e975382e5"
+SRCREV_qtwebengine = "96e932d73057c3e705b849249fb02e1837b7576d"
+SRCREV_chromium = "0ad2814370799a2161057d92231fe3ee00e2fe98"
 SRCREV = "${SRCREV_qtwebengine}"
 
 SRCREV_FORMAT = "qtwebengine_chromium"
