@@ -36,6 +36,6 @@ SRC_URI += " \
 "
 
 SRCREV_qtlocation = "0007ebcaf4ea5bb5b8512ed582a808a38aeb3be5"
-SRCREV_qtlocation-mapboxgl = "4b85252fbe811a786c6ee9eabedb7639b031dc53"
+SRCREV_qtlocation-mapboxgl = "d3101bbc22edd41c9036ea487d4a71eabd97823d"
 
 SRCREV_FORMAT = "qtlocation_qtlocation-mapboxgl"
