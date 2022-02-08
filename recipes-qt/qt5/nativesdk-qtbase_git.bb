@@ -143,6 +143,7 @@ do_configure() {
         -silent \
         -nomake examples \
         -nomake tests \
+        -make tools \
         -no-compile-examples \
         -platform ${OE_QMAKE_PLATFORM_NATIVE} \
         -xplatform ${OE_QMAKE_PLATFORM} \
