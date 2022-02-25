@@ -50,15 +50,6 @@ PACKAGECONFIG:append:pn-qtbase = " icu gl accessibility freetype fontconfig"
 PACKAGECONFIG:remove:pn-qtwayland = "xcomposite-egl xcomposite-glx"
 # for webkit-efl
 PACKAGECONFIG:append:pn-harfbuzz = " icu"
-inherit blacklist
-# PNBLACKLIST[samsung-rfs-mgr] = "needs newer libsamsung-ipc with negative D_P: Requested 'samsung-ipc-1.0 >= 0.2' but version of libsamsung-ipc is 0.1.0"
-PNBLACKLIST[android-system] = "depends on lxc from meta-virtualiazation which isn't included in my world builds"
-PNBLACKLIST[bigbuckbunny-1080p] = "big and doesn't really need to be tested so much"
-PNBLACKLIST[bigbuckbunny-480p] = "big and doesn't really need to be tested so much"
-PNBLACKLIST[bigbuckbunny-720p] = "big and doesn't really need to be tested so much"
-PNBLACKLIST[bigbuckbunny-720p] = "big and doesn't really need to be tested so much"
-PNBLACKLIST[tearsofsteel-1080p] = "big and doesn't really need to be tested so much"
-PNBLACKLIST[build-appliance-image] = "tries to include whole downloads directory in /home/builder/poky :/"
 # enable reporting
 # needs http://patchwork.openembedded.org/patch/68735/
 #ERR_REPORT_SERVER = "errors.yoctoproject.org"

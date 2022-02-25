@@ -29,6 +29,9 @@ target1: &target1
     - type: EnvironmentVariable
       variableName: YOCTO_BRANCH
       variableValue: gatesgarth
+    - type: EnvironmentVariable
+      variableName: TEST_CONFIGS
+      variableValue: ci configs
   enable_if:
       condition: property
       property: target.arch
@@ -42,6 +45,9 @@ target2: &target2
     - type: EnvironmentVariable
       variableName: YOCTO_BRANCH
       variableValue: dunfell
+    - type: EnvironmentVariable
+      variableName: TEST_CONFIGS
+      variableValue: ci configs
   enable_if:
       condition: property
       property: target.arch
@@ -55,6 +61,9 @@ target3: &target3
     - type: EnvironmentVariable
       variableName: YOCTO_BRANCH
       variableValue: hardknott
+    - type: EnvironmentVariable
+      variableName: TEST_CONFIGS
+      variableValue: ci configs
   enable_if:
       condition: property
       property: target.arch
@@ -68,6 +77,9 @@ target4: &target4
     - type: EnvironmentVariable
       variableName: YOCTO_BRANCH
       variableValue: honister
+    - type: EnvironmentVariable
+      variableName: TEST_CONFIGS
+      variableValue: ci configs
   enable_if:
       condition: property
       property: target.arch
@@ -81,6 +93,9 @@ target5: &target5
     - type: EnvironmentVariable
       variableName: YOCTO_BRANCH
       variableValue: master
+    - type: EnvironmentVariable
+      variableName: TEST_CONFIGS
+      variableValue: ci configs
   enable_if:
       condition: property
       property: target.arch
@@ -123,14 +138,13 @@ instructions:
       (cd meta-python2; git checkout ${YOCTO_BRANCH})
 
       source ./poky/oe-init-build-env
-      export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE SSTATE_DIR DL_DIR"
-      export DL_DIR=/mnt/yocto-cache/downloads
-      export BB_GENERATE_MIRROR_TARBALLS=1
-      export SSTATE_DIR=/mnt/yocto-cache/sstate-caches/$(sed -n -e "s/DISTRO_CODENAME.*\"\(.*\)\"/\1/p" ../poky/meta-*/conf/distro/poky.conf)-meta-qt5
       bitbake-layers add-layer ../meta-openembedded/meta-oe
       bitbake-layers add-layer ../meta-python2
       bitbake-layers add-layer ${SOURCE_DIR}
-      echo "require ${SOURCE_DIR}/coin/test-configs.inc" >> conf/local.conf
+
+      for conf in ${TEST_CONFIGS}; do
+         echo "require ${SOURCE_DIR}/coin/test-${conf}.inc" >> conf/local.conf
+      done
 
       # EXCLUDE_FROM_WORLD
       rm -fv ${SOURCE_DIR}/recipes-qt/examples/qt5-opengles2-test_git.bb
