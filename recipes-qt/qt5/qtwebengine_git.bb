@@ -199,7 +199,7 @@ SRC_URI:append:libc-musl = "\
     file://chromium/0027-chromium-musl-initialize-msghdr-in-a-compatible-mann.patch;patchdir=src/3rdparty \
 "
 
-SRCREV_qtwebengine = "f206c05a9dc6c2391b10762b6038f65fdb6818b6"
+SRCREV_qtwebengine = "722b27f8473fcac1c24b5da393d6ef42fcfb9a16"
 SRCREV_chromium = "ab3a3447aa59c946fec6877d748bb8a72a8b34be"
 SRCREV = "${SRCREV_qtwebengine}"
 
