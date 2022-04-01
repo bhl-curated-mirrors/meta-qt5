@@ -143,4 +143,4 @@ do_install() {
     echo 'set(_qt5_corelib_extra_includes "${_qt5Core_install_prefix}/lib${QT_DIR_NAME}/mkspecs/linux-oe-g++")' > ${D}${libdir}/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake
 }
 
-SRCREV = "daa32037a6ffd4ce3f168db81c0841f2bde68cc9"
+SRCREV = "168ff3419f256fdb35b586275d293fc0cd773fe1"
