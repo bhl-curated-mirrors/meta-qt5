@@ -2,7 +2,7 @@ require qt5.inc
 require qt5-lts.inc
 require qt5-ptest.inc
 
-LICENSE = "GFDL-1.3 & BSD & ( GPL-3.0 & The-Qt-Company-GPL-Exception-1.0 | The-Qt-Company-Commercial ) & ( GPL-2.0+ | LGPL-3.0 | The-Qt-Company-Commercial )"
+LICENSE = "GFDL-1.3 & BSD-3-Clause & ( GPL-3.0-only & The-Qt-Company-GPL-Exception-1.0 | The-Qt-Company-Commercial ) & ( GPL-2.0-or-later | LGPL-3.0-only | The-Qt-Company-Commercial )"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPL3;md5=e6a600fd5e1d9cbde2d983680233ad02 \
     file://LICENSE.GPL2;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
@@ -14,7 +14,7 @@ LIC_FILES_CHKSUM = " \
 
 # common for qtbase-native, qtbase-nativesdk and qtbase
 # Patches from https://github.com/meta-qt5/qtbase/commits/b5.15-shared
-# 5.15.meta-qt5-shared.2
+# 5.15.meta-qt5-shared.3
 SRC_URI += "\
     file://0001-Add-linux-oe-g-platform.patch \
     file://0002-cmake-Use-OE_QMAKE_PATH_EXTERNAL_HOST_BINS.patch \
@@ -27,13 +27,14 @@ SRC_URI += "\
     file://0009-Add-OE-specific-specs-for-clang-compiler.patch \
     file://0010-linux-clang-Invert-conditional-for-defining-QT_SOCKL.patch \
     file://0011-tst_qlocale-Enable-QT_USE_FENV-only-on-glibc.patch \
-    file://0013-Disable-ltcg-for-host_build.patch \
-    file://0014-Qt5GuiConfigExtras.cmake.in-cope-with-variable-path-.patch \
-    file://0015-corelib-Include-sys-types.h-for-uint32_t.patch \
-    file://0016-Define-QMAKE_CXX.COMPILER_MACROS-for-clang-on-linux.patch \
-    file://0018-tst_qpainter-FE_-macros-are-not-defined-for-every-pl.patch \
-    file://0019-Define-__NR_futex-if-it-does-not-exist.patch \
-    file://0020-Revert-Fix-workaround-in-pthread-destructor.patch \
+    file://0012-Disable-ltcg-for-host_build.patch \
+    file://0013-Qt5GuiConfigExtras.cmake.in-cope-with-variable-path-.patch \
+    file://0014-corelib-Include-sys-types.h-for-uint32_t.patch \
+    file://0015-Define-QMAKE_CXX.COMPILER_MACROS-for-clang-on-linux.patch \
+    file://0016-tst_qpainter-FE_-macros-are-not-defined-for-every-pl.patch \
+    file://0017-Define-__NR_futex-if-it-does-not-exist.patch \
+    file://0018-Revert-Fix-workaround-in-pthread-destructor.patch \
+    file://0019-tst_QPluginLoader-Simplify-creating-a-fake-pointer-i.patch \
 "
 
 # Disable LTO for now, QT5 patches are being worked upstream, perhaps revisit with

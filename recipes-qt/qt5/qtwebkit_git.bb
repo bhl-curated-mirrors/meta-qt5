@@ -3,7 +3,7 @@ require qt5-git.inc
 
 inherit pkgconfig
 
-LICENSE = "BSD & LGPLv2+ | GPL-2.0"
+LICENSE = "BSD-3-Clause & LGPL-2.0-or-later | GPL-2.0-only"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=58a180e1cf84c756c29f782b3a485c29 \
     file://Source/JavaScriptCore/parser/Parser.h;endline=21;md5=bd69f72183a7af673863f057576e21ee \
@@ -52,6 +52,7 @@ ARM_INSTRUCTION_SET:armv7ve = "thumb"
 # just use -fpermissive in this case like fedora did:
 # https://bugzilla.redhat.com/show_bug.cgi?id=1582954
 CXXFLAGS += "-fpermissive"
+CXXFLAGS += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', '', '-DEGL_NO_X11=1', d)}"
 
 EXTRA_OECMAKE += " \
     -DPORT=Qt \

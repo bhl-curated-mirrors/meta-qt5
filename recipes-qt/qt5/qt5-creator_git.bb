@@ -7,12 +7,12 @@ SUMMARY = "Qt Creator is a new cross-platform Qt IDE"
 # 'System GDB at /usr/bin/gdb.
 
 HOMEPAGE = "https://qt-project.org/"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.GPL3-EXCEPT;md5=763d8c535a234d9a3fb682c7ecb6c073 \
 "
 
-inherit qmake5 mime-xdg
+inherit qmake5 pkgconfig mime-xdg
 
 DEPENDS += "qtbase qtscript qtxmlpatterns qtx11extras qtdeclarative qttools qttools-native qtsvg chrpath-replacement-native zlib"
 DEPENDS:append:libc-musl = " libexecinfo"
