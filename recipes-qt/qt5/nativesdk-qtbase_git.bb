@@ -34,7 +34,6 @@ SRC_URI += "\
     file://0005-Disable-all-unknown-features-instead-of-erroring-out.patch \
     file://0006-Pretend-Qt5-wasn-t-found-if-OE_QMAKE_PATH_EXTERNAL_H.patch \
     file://0007-Delete-qlonglong-and-qulonglong.patch \
-    file://0008-QBuffer-add-missing-limits-include.patch \
     file://0009-Add-OE-specific-specs-for-clang-compiler.patch \
     file://0010-linux-clang-Invert-conditional-for-defining-QT_SOCKL.patch \
     file://0011-tst_qlocale-Enable-QT_USE_FENV-only-on-glibc.patch \
