@@ -151,8 +151,6 @@ instructions:
 
       # EXCLUDE_FROM_WORLD
       rm -fv ${SOURCE_DIR}/recipes-qt/examples/qt5-opengles2-test_git.bb
-      rm -rv ${SOURCE_DIR}/recipes-python/pyqt5/python3-pyqt5_*.bb
-      rm -rv ${SOURCE_DIR}/recipes-python/pyqtchart/python3-pyqtchart_*.bb
       rm -rv ${SOURCE_DIR}/recipes-python/pytest-qt/python3-pytest-qt_*.bb
 
       # build all recipes found in the layer
