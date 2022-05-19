@@ -150,8 +150,8 @@ SRC_URI:append:libc-musl = "\
 
 SRC_URI:append:runtime-llvm = " file://native-clang.patch "
 
-SRCREV_qtwebengine = "56260bb605a74fabdfc74cef3bf890394af88b3d"
-SRCREV_chromium = "d13d0924c4e18ecc4b79adf0fec142ee9a9eaa14"
+SRCREV_qtwebengine = "c7e716ef1ffd63a8ab1f4dbf879230849eb3b505"
+SRCREV_chromium = "caba2fcb0fe8a8d213c4c79d26da3bb88eee61c7"
 SRCREV = "${SRCREV_qtwebengine}"
 
 SRCREV_FORMAT = "qtwebengine_chromium"
