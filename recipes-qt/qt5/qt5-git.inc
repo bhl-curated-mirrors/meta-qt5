@@ -2,7 +2,7 @@
 # Copyright (C) 2013-2022 Martin Jansa <martin.jansa@gmail.com>
 
 QT_MODULE ?= "${BPN}"
-QT_MODULE_BRANCH ?= "5.15.10"
+QT_MODULE_BRANCH ?= "5.15"
 QT_MODULE_BRANCH_PARAM ?= "branch=${QT_MODULE_BRANCH}"
 QT_MODULE_REPO ?= "${QT_MODULE}.git"
 
@@ -15,4 +15,4 @@ CVE_PRODUCT = "qt"
 
 S = "${WORKDIR}/git"
 
-PV = "5.15.10+git${SRCPV}"
+PV = "5.15.11+git${SRCPV}"
