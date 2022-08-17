@@ -150,14 +150,14 @@ RDEPENDS:${PN}-examples += " \
 QT_MODULE_BRANCH_CHROMIUM = "87-based"
 
 # Patches from https://github.com/meta-qt5/qtwebengine/commits/b5.15-glibc
-# 5.15-glibc.meta-qt5.14
+# 5.15-glibc.meta-qt5.15
 SRC_URI += " \
     ${QT_GIT}/qtwebengine-chromium.git;name=chromium;branch=${QT_MODULE_BRANCH_CHROMIUM};protocol=${QT_GIT_PROTOCOL};destsuffix=git/src/3rdparty \
     file://0001-Force-host-toolchain-configuration.patch \
 "
 
 # Patches from https://github.com/meta-qt5/qtwebengine/commits/b5.15
-# 5.15.meta-qt5.14
+# 5.15.meta-qt5.15
 SRC_URI:append:libc-musl = "\
     file://0002-musl-don-t-use-pvalloc-as-it-s-not-available-on-musl.patch \
     file://0003-musl-link-against-libexecinfo.patch \
