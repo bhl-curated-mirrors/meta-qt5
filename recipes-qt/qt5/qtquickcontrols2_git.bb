@@ -12,4 +12,4 @@ DEPENDS += "qtdeclarative qtdeclarative-native"
 
 SRC_URI += "file://0001-Revert-Get-the-scale-of-the-popup-item-when-setting-.patch"
 
-SRCREV = "56acab014d490951f14e6719b7bd535146646fc7"
+SRCREV = "6441e0da5fa4b69504b7ee57d28cde6ac954d855"

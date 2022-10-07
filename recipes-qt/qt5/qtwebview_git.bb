@@ -23,4 +23,4 @@ python() {
     if 'meta-python2' not in d.getVar('BBFILE_COLLECTIONS').split():
         raise bb.parse.SkipRecipe('Requires meta-python2 to be present.')
 }
-SRCREV = "f80cd0f766094e01da1008d14123a12740a2b771"
+SRCREV = "71058b95191399a74959351cd9fdd4d6be9cbe1b"

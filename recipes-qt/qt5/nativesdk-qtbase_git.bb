@@ -200,4 +200,4 @@ fakeroot do_generate_qt_environment_file() {
 do_generate_qt_environment_file[umask] = "022"
 addtask generate_qt_environment_file after do_install before do_package
 
-SRCREV = "a96fc76fa78f3500266b3a34016f9e1bd29b319c"
+SRCREV = "c6387ce99b818f87c64b290af692089821a35aea"
