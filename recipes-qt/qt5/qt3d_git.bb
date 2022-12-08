@@ -44,7 +44,7 @@ do_configure:prepend() {
          ${S}/src/quick3d/imports/input/importsinput.pro
 }
 
-SRCREV_qt3d = "d67a1934416cfd65e930a95506d20076ffd28b30"
+SRCREV_qt3d = "b59fdcefdbce6a1870e49b0da14d30b51293dea6"
 SRCREV_assimp = "8f0c6b04b2257a520aaab38421b2e090204b69df"
 
 SRCREV_FORMAT = "qt3d_assimp"
