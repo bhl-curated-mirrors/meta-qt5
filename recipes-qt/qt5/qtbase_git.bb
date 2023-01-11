@@ -14,7 +14,7 @@ LIC_FILES_CHKSUM = " \
 
 # common for qtbase-native, qtbase-nativesdk and qtbase
 # Patches from https://github.com/meta-qt5/qtbase/commits/b5.15-shared
-# 5.15.meta-qt5-shared.3
+# 5.15.meta-qt5-shared.4
 SRC_URI += "\
     file://0001-Add-linux-oe-g-platform.patch \
     file://0002-cmake-Use-OE_QMAKE_PATH_EXTERNAL_HOST_BINS.patch \
@@ -34,7 +34,9 @@ SRC_URI += "\
     file://0017-Define-__NR_futex-if-it-does-not-exist.patch \
     file://0018-Revert-Fix-workaround-in-pthread-destructor.patch \
     file://0019-tst_QPluginLoader-Simplify-creating-a-fake-pointer-i.patch \
-    file://0005-testlib-don-t-track-the-build-or-source-directories.patch \
+    file://0021-rcc-Just-dcument-file-name-without-full-path-to-redu.patch \
+    file://0022-testlib-don-t-track-the-build-or-source-directories.patch \
+    file://0023-zlib-Do-not-undefine-_FILE_OFFSET_BITS.patch \
 "
 
 # Disable LTO for now, QT5 patches are being worked upstream, perhaps revisit with
@@ -114,7 +116,7 @@ PACKAGECONFIG[no-opengl] = "-no-opengl"
 PACKAGECONFIG[tslib] = "-tslib,-no-tslib,tslib"
 PACKAGECONFIG[cups] = "-cups,-no-cups,cups"
 PACKAGECONFIG[dbus] = "-dbus,-no-dbus,dbus"
-PACKAGECONFIG[xcb] = "-xcb -xcb-xlib -no-bundled-xcb-xinput,-no-xcb,libxcb xcb-util-wm xcb-util-image xcb-util-keysyms xcb-util-renderutil libxext"
+PACKAGECONFIG[xcb] = "-xcb -xcb-xlib -no-bundled-xcb-xinput -DUSE_X11=ON,-no-xcb,libxcb xcb-util-wm xcb-util-image xcb-util-keysyms xcb-util-renderutil libxext"
 PACKAGECONFIG[sql-ibase] = "-sql-ibase,-no-sql-ibase"
 PACKAGECONFIG[sql-mysql] = "-sql-mysql -mysql_config ${STAGING_BINDIR_CROSS}/mysql_config,-no-sql-mysql,mysql5"
 PACKAGECONFIG[sql-psql] = "-sql-psql,-no-sql-psql,postgresql"

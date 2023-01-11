@@ -24,6 +24,7 @@ SRC_URI += "\
     file://0008-Fix-build-with-icu-68.patch \
     file://0009-Riscv-Add-support-for-riscv.patch \
     file://mips-atomic.patch \
+    file://0001-Offlineasm-warnings-with-newer-Ruby-versions-https-b.patch \
 "
 
 SRC_URI:append:riscv32 = " file://0010-webdriver-libatomic.patch "
@@ -94,6 +95,7 @@ PACKAGECONFIG[x11] = "-DENABLE_X11_TARGET=ON,-DENABLE_X11_TARGET=OFF,libxcomposi
 PACKAGECONFIG[fontconfig] = "-DENABLE_TEST_SUPPORT=ON,-DENABLE_TEST_SUPPORT=OFF,fontconfig"
 # hyphen is only in meta-office currently!
 PACKAGECONFIG[hyphen] = "-DUSE_LIBHYPHEN=ON,-DUSE_LIBHYPHEN=OFF,hyphen"
+PACKAGECONFIG[tools] = "-DENABLE_TOOLS=ON,-DENABLE_TOOLS=OFF,"
 
 # remove default ${PN}-examples* set in qt5.inc, because they conflicts with ${PN} from separate webkit-examples recipe
 PACKAGES:remove = "${PN}-examples"

@@ -1,0 +1,34 @@
+From 6822e78d1e0e67d14bb06f74a02cf48875e901c5 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Sun, 1 Jan 2023 21:30:23 -0800
+Subject: [PATCH] zlib: Do not undefine _FILE_OFFSET_BITS
+
+This is required for 64bit time_t to work with glibc as it needs
+_FILE_OFFSET_BITS to be defined as 64 as well.
+
+Upstream-Status: Pending
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ src/3rdparty/zlib/src/gzguts.h | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/src/3rdparty/zlib/src/gzguts.h b/src/3rdparty/zlib/src/gzguts.h
+index 3ec32af25f..d1916b215e 100644
+--- a/src/3rdparty/zlib/src/gzguts.h
++++ b/src/3rdparty/zlib/src/gzguts.h
+@@ -22,15 +22,6 @@
+ #define HAVE_HIDDEN
+ #endif
+ 
+-#ifdef _LARGEFILE64_SOURCE
+-#  ifndef _LARGEFILE_SOURCE
+-#    define _LARGEFILE_SOURCE 1
+-#  endif
+-#  ifdef _FILE_OFFSET_BITS
+-#    undef _FILE_OFFSET_BITS
+-#  endif
+-#endif
+-
+ #ifdef HAVE_HIDDEN
+ #  define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+ #else
