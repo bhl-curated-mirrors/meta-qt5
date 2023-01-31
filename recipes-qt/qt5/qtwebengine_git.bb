@@ -178,7 +178,6 @@ SRC_URI += " \
     file://chromium/0009-chromium-Link-v8-with-libatomic-on-x86.patch;patchdir=src/3rdparty \
     file://chromium/0010-chromium-icu-use-system-library-only-targets.patch;patchdir=src/3rdparty \
     file://chromium/0011-chromium-Add-missing-include-for-C-strncpy.patch;patchdir=src/3rdparty \
-    file://chromium/0011-chromium-Remove-TRUE-to-prep-landing-of-icu68.patch;patchdir=src/3rdparty \
     file://chromium/0012-chromium-skia-Fix-build-with-gcc-12.patch;patchdir=src/3rdparty \
     file://chromium/0013-Remove-unsetting-_FILE_OFFSET_BITS.patch;patchdir=src/3rdparty \
 "
@@ -199,8 +198,8 @@ SRC_URI:append:libc-musl = "\
     file://chromium/0023-chromium-musl-initialize-msghdr-in-a-compatible-mann.patch;patchdir=src/3rdparty \
 "
 
-SRCREV_qtwebengine = "abb854d1cf5da50ab20c9f261c71f4c99743515c"
-SRCREV_chromium = "e0fd3a5d3ce79d43dee6e0bad16a71123d9a14b3"
+SRCREV_qtwebengine = "ee9794c7263b8b5cb85cd9648c68687e08805aca"
+SRCREV_chromium = "87897ba0a5f5676633c6d44e002c5a7f306a91d7"
 SRCREV = "${SRCREV_qtwebengine}"
 
 SRCREV_FORMAT = "qtwebengine_chromium"
