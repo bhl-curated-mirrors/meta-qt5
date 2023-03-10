@@ -17,4 +17,4 @@ PACKAGECONFIG[socketcan] = "-feature-socketcan,-no-feature-socketcan,,libsocketc
 
 EXTRA_QMAKEVARS_CONFIGURE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "ec06e04c05ee138fff0dbd49bbe3e0f98eeb9e56"
+SRCREV = "5c723e159a85501d0b3ae29460fd84390a0601a4"
