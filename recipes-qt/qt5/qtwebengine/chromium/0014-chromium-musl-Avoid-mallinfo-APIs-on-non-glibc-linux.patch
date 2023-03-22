@@ -5,6 +5,7 @@ Subject: [PATCH] chromium: musl: Avoid mallinfo() APIs on
  non-glibc/linux
 
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
+Upstream-Status: Pending
 ---
  chromium/base/process/process_metrics_posix.cc    | 4 ++--
  chromium/base/trace_event/malloc_dump_provider.cc | 2 ++
