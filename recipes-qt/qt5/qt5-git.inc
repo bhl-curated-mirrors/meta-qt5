@@ -11,7 +11,7 @@ SRC_URI = " \
     ${QT_GIT}/${QT_MODULE_REPO};name=${QT_MODULE};${QT_MODULE_BRANCH_PARAM};protocol=${QT_GIT_PROTOCOL} \
 "
 
-CVE_PRODUCT = "qt"
+CVE_PRODUCT:append = " qt"
 
 S = "${WORKDIR}/git"
 
