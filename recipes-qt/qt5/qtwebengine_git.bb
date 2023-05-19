@@ -180,7 +180,6 @@ SRC_URI += " \
     file://chromium/0011-chromium-Add-missing-include-for-C-strncpy.patch;patchdir=src/3rdparty \
     file://chromium/0011-chromium-skia-Fix-build-with-gcc-12.patch;patchdir=src/3rdparty \
     file://chromium/0012-Remove-unsetting-_FILE_OFFSET_BITS.patch;patchdir=src/3rdparty \
-    file://chromium/0013-Fix-build-with-gcc-13.patch;patchdir=src/3rdparty \
 "
 
 # Patches from https://github.com/meta-qt5/qtwebengine-chromium/commits/87-based
@@ -199,8 +198,8 @@ SRC_URI:append:libc-musl = "\
     file://chromium/0023-chromium-musl-initialize-msghdr-in-a-compatible-mann.patch;patchdir=src/3rdparty \
 "
 
-SRCREV_qtwebengine = "372dce37231c9246e73f4cefada69071380e48e8"
-SRCREV_chromium = "e48df7803c7c98b0b2471c94057d32e44a301ad5"
+SRCREV_qtwebengine = "872003d9ad187a9904e3b2b5ccc89c774839bec6"
+SRCREV_chromium = "18c9261dc5b8aa57a0bdd5b62ce6f648cca1ef5e"
 SRCREV = "${SRCREV_qtwebengine}"
 
 SRCREV_FORMAT = "qtwebengine_chromium"
