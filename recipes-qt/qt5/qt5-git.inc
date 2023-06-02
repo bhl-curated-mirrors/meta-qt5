@@ -15,4 +15,4 @@ CVE_PRODUCT:append = " qt"
 
 S = "${WORKDIR}/git"
 
-PV = "5.15.14+git${SRCPV}"
+PV = "5.15.15+git${SRCPV}"
