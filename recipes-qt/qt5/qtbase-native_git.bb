@@ -10,7 +10,7 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504 \
     file://LICENSE.GPL3-EXCEPT;md5=763d8c535a234d9a3fb682c7ecb6c073 \
     file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
-    file://LICENSE.QT-LICENSE-AGREEMENT;md5=38de3b110ade3b6ee2f0b6a95ab16f1a \
+    file://LICENSE.QT-LICENSE-AGREEMENT;md5=485e1d58b313def058a0d72598aa6efe \
 "
 
 require qt5-native.inc
@@ -145,4 +145,4 @@ do_install() {
     echo 'set(_qt5_corelib_extra_includes "${_qt5Core_install_prefix}/lib${QT_DIR_NAME}/mkspecs/linux-oe-g++")' > ${D}${libdir}/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake
 }
 
-SRCREV = "5ca8cfaa56043163997be2a6188812a8cd1c289c"
+SRCREV = "3ef23083473cce64a48b21e32ff0daca1d65e20a"
