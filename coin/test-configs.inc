@@ -6,7 +6,7 @@ TCLIBCAPPEND = "fs"
 PREFERRED_PROVIDER_udev = "systemd"
 PREFERRED_PROVIDER_virtual/fftw = "fftw"
 # use gold
-DISTRO_FEATURES:append = " ld-is-gold"
+#DISTRO_FEATURES:append = " ld-is-gold"
 # use ptest
 DISTRO_FEATURES:append = " ptest"
 # use systemd
