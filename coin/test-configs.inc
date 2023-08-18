@@ -63,6 +63,9 @@ INHERIT += "buildstats buildstats-summary"
 # be more strict with QA warnings, turn them all to errors:
 ERROR_QA:append = " ldflags useless-rpaths rpaths staticdev libdir xorg-driver-abi             textrel already-stripped incompatible-license files-invalid             installed-vs-shipped compile-host-path install-host-path             pn-overrides infodir build-deps             unknown-configure-option symlink-to-sysroot multilib             invalid-packageconfig host-user-contaminated uppercase-pn"
 WARN_QA:remove = " ldflags useless-rpaths rpaths staticdev libdir xorg-driver-abi             textrel already-stripped incompatible-license files-invalid             installed-vs-shipped compile-host-path install-host-path             pn-overrides infodir build-deps             unknown-configure-option symlink-to-sysroot multilib             invalid-packageconfig host-user-contaminated uppercase-pn"
+# workaround for qemu
+# nativesdk-qemu-user-mips rdepends on nativesdk-bash, but it isn't a build dependency
+INSANE_SKIP:nativesdk-qemu-user-mips = "build-deps"
 # enable thumb for broader test coverage (oe-core autobuilder doesn't have thumb enabled)
 PREFERRED_ARM_INSTRUCTION_SET              ?= "thumb"
 ARM_INSTRUCTION_SET = "${PREFERRED_ARM_INSTRUCTION_SET}"
