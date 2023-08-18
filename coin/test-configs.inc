@@ -3,17 +3,13 @@
 INHERIT += "rm_work"
 # We want musl and glibc to share the same tmpfs, so instead of appending default "-${TCLIBC}" we append "fs"
 TCLIBCAPPEND = "fs"
-PREFERRED_PROVIDER_udev = "systemd"
 PREFERRED_PROVIDER_virtual/fftw = "fftw"
 # use gold
 #DISTRO_FEATURES:append = " ld-is-gold"
 # use ptest
 DISTRO_FEATURES:append = " ptest"
 # use systemd
-DISTRO_FEATURES:append = " systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-VIRTUAL-RUNTIME_initscripts = ""
+INIT_MANAGER:forcevariable = "systemd"
 # use opengl
 DISTRO_FEATURES:append = " opengl"
 # use wayland to fix building weston and qtwayland
