@@ -137,13 +137,11 @@ instructions:
          echo "require ${SOURCE_DIR}/coin/test-${conf}.inc" >> conf/local.conf
       done
 
-      # EXCLUDE_FROM_WORLD
+      # EXCLUDE FROM WORLD
       rm -fv ${SOURCE_DIR}/recipes-qt/examples/qt5-opengles2-test_git.bb
-      rm -rv ${SOURCE_DIR}/recipes-python/pyqtchart/python3-pyqtchart_*.bb
-      rm -rv ${SOURCE_DIR}/recipes-python/pytest-qt/python3-pytest-qt_*.bb
 
-      # build all recipes found in the layer
-      bitbake $(find ${SOURCE_DIR} -name *.bb | xargs -n1 basename | sed -e 's/\([^._]*\).*/\1/')
+      # build only recipes found under recipes-qt
+      bitbake $(find ${SOURCE_DIR}/recipes-qt -name *.bb | xargs -n1 basename | sed -e 's/\([^._]*\).*/\1/')
     filename: "{{.BuildDir}}/start-build"
     fileMode: 420
   - type: ExecuteCommand
