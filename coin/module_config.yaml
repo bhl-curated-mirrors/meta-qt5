@@ -127,7 +127,7 @@ instructions:
       source ./poky/oe-init-build-env
 
       # meta-python2 layer master branch compatible with kirkstone only
-      echo "LAYERSERIES_COMPAT_meta-python2:append = \" langdale mickledore\"" >> ../meta-python2/conf/layer.conf
+      echo "LAYERSERIES_COMPAT_meta-python2:append = \" langdale mickledore nanbield\"" >> ../meta-python2/conf/layer.conf
 
       bitbake-layers add-layer ../meta-openembedded/meta-oe
       bitbake-layers add-layer ../meta-python2
